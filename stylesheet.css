@@ -1,0 +1,64 @@
+body {
+	padding-top: 100px;
+	background-image: url("/images/6358615623227228942081594044_corner_cover.jpg");
+	background-size: cover;
+}
+.container {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+/* * * * * * * * * * * * * * * * * * * *
+			NAV BAR
+* * * * * * * * * * * * * * * * * * * */
+.navbar .fixed-top .navbar-expand-lg .navbar-light .bg-light {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.pull-left img {
+	height: 45px;
+	width: 45px;
+	margin-right: 10px;
+}
+.navbar-brand {
+	color: #2D4169;
+}
+
+/* * * * * * * * * * * * * * * * * * * * 
+			SEARCH BAR
+/* * * * * * * * * * * * * * * * * * * *
+/* Style the search field */
+form.searchBar input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  font: Quicksand;
+  border: 1px solid #f1f1f1;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+  margin-top: 25%;
+}
+
+/* Style the submit button */
+form.searchBar button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #232D4B;
+  color: white;
+  font-size: 17px;
+  border: 1px solid #232D4B;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  margin-top: 25%;
+}
+
+form.searchBar button:hover {
+  background: #041027;
+}
+
+/* Clear floats */
+form.searchBar::after {
+  content: "";
+  clear: both;
+  display: table;
+}

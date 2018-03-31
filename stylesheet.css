@@ -1,6 +1,6 @@
 #homepage {
 	padding-top: 100px;
-	background-image: url("/images/6358615623227228942081594044_corner_cover.jpg");
+	background-image: url("./images/6358615623227228942081594044_corner_cover.jpg");
 	background-size: cover;
 }
 .container {
@@ -74,7 +74,7 @@ form.searchBar::after {
 * * * * * * * * * * * * * * * * * * * */
 #about {
   padding-top: 100px;
-  background-image: url("/images/6358615623227228942081594044_corner_cover.jpg");
+  background-image: url("./images/6358615623227228942081594044_corner_cover.jpg");
   background-size: cover;
 }
 .aboutBackground {

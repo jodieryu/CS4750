@@ -1,5 +1,4 @@
-CREATE DATABASE db; 
-USE db;
+SET FOREIGN_KEY_CHECKS=0; 
 
 DROP TABLE IF EXISTS restaurant;
 CREATE TABLE restaurant( 
@@ -31,7 +30,7 @@ CREATE TABLE r_hours(
     sat_open_time VARCHAR(5) NOT NULL,
     sat__close_time VARCHAR(5) NOT NULL,
     description VARCHAR(20), #ex: lunch, dinner, dessert, bar, etc. 	
-    PRIMARY KEY (r_id, start_time, end_time),
+    PRIMARY KEY (r_id, description),
     FOREIGN KEY (r_id) REFERENCES restaurant(r_id)
 );
 
@@ -65,9 +64,9 @@ CREATE TABLE r_cuisine(
 
 DROP TABLE IF EXISTS menu;
 CREATE TABLE menu(
-	food_id INT NOT NULL PRIMARY KEY,
+	food_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     food_name VARCHAR(20) NOT NULL,
-    price INT NOT NULL,
+    price DECIMAL(6,2) NOT NULL,
     category VARCHAR(20), #type of food: dessert, main, appetizer, etc. 
     description VARCHAR(100)
 );

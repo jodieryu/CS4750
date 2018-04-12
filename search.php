@@ -40,8 +40,8 @@
       </li>
     </ul>
 
-    <form class="form-inline">
-    <button class="btn btn-outline-success" type="button">Login</button>
+    <form class="form-inline" action="login.php">
+    <button class="btn btn-outline-success">Login</button>
     </form>
     
   </div>

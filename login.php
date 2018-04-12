@@ -43,10 +43,6 @@ session_start();
         <a class="nav-link" href="#">Categories</a>
       </li>
     </ul>
-
-    <form class="form-inline">
-    <button class="btn btn-outline-success" type="button">Login</button>
-    </form>
     
   </div>
 </nav>

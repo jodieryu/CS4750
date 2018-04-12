@@ -64,6 +64,10 @@ session_start();
         <div class="alert alert-success">
           <strong>Sign Up Success!</strong> Your account has been created.
         </div>
+    <?php elseif(isset($_SESSION["badSignIn"])) : ?>
+        <div class="alert alert-danger">
+          <strong>Incorrect Username or Password!</strong> Please try again.
+        </div>
     <?php 
       endif;
       session_unset(); 
@@ -87,7 +91,7 @@ session_start();
               </div>
             </div>
             <div class="form-bottom">
-              <form role="form" action="" method="post" class="login-form">
+              <form role="form" method="post" action="signin.php" class="login-form">
                 <div class="form-group">
                   <label class="sr-only" for="form-username">Username</label>
                   <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">

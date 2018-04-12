@@ -23,14 +23,13 @@ foreach($fields as $field) {
 }
 
 // Check to see if the username already exists
-$formvar = "form-username";
 $sql="SELECT username
         FROM customer
         WHERE username='{$_POST[$fields[5]]}'";
 $result = mysqli_query($con,$sql);
 
 // If the username exists, go back to login
-if (mysqli_num_rows($result)!=0) {
+if (mysqli_num_rows($result)!= 0) {
 	$_SESSION["taken"] = true;
 	header("Location: login.php");
     exit();

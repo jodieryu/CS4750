@@ -1,0 +1,21 @@
+.white {
+	margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+
+.col-sm-5 {
+	background-color: #ADD8E6;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.form-box div {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.form-box button {
+	margin-left: 20px;
+	margin-right: 20px;
+}

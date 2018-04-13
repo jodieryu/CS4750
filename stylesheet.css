@@ -89,6 +89,24 @@ form.searchBar::after {
 }
 
 /* * * * * * * * * * * * * * * * * * * * * *
+            Categories Page
+* * * * * * * * * * * * * * * * * * * * * * */
+#categoriesPage {
+  padding-top: 100px;
+}
+
+.categoryItems img {
+  height: 300px;
+  width: 350px;
+  display: inline-block;
+}
+
+.category {
+  display: inline-block; 
+  padding: 8px;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * *
             Make a Restaurant (admins)
 * * * * * * * * * * * * * * * * * * * * * * */
 #makeRestaurant {
@@ -175,3 +193,5 @@ label {
   border: 1px solid red;
   margin: 20px;
 }
+
+

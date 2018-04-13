@@ -29,6 +29,14 @@ footer {
 	color: #2D4169;
 }
 
+.dropdown {
+  margin-right: 10%;
+}
+
+.dropdown li {
+  padding-left: 10px;
+}
+
 /* * * * * * * * * * * * * * * * * * * * 
 			SEARCH BAR
 /* * * * * * * * * * * * * * * * * * * *

@@ -24,6 +24,7 @@ $result = mysqli_query($con,$sql);
 if (mysqli_num_rows($result)!= 0) {
 	$row = mysqli_fetch_array($result);
 	if(password_verify($_POST["form-password"], $row["pwd"])) {
+		$_SESSION["username"] = $_POST[$formUsername];
 	    header("Location: ./");
 	    exit();
 	} 

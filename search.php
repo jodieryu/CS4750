@@ -95,6 +95,9 @@
                   <p>{$row['street']}, Charlottesville, VA</p>
                   <p>{$row['phone_num']}</p>
                 </div>
+                <div class=\"mostrightCol\">
+                  <button class=\"btn btn-outline-success\">Add to BucketList!</button>
+                </div>
               </div>
             </li>";
              echo $tableRow;

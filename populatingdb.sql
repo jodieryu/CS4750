@@ -15,12 +15,20 @@ INSERT INTO restaurant (rname, phone_num, street, price_range, rating_google) VA
 ("White Spot", 4349842828, "1407 University Ave", "$", 4.2),
 ("Trinity Irish Pub", 4342957100, "1505 University Ave", "$$", 3.8),
 ("Mellow Mushroom", 4349729366, "1321 W Main St", "$$", 3.8), 
-("Chopt Creative Salad Co.", 4343288092, "1114 Emmet St", "$$", 3.5);
+("Chopt Creative Salad Co.", 4343288092, "1114 Emmet St", "$$", 3.5),
+("Lampo", 4342443226, "205 Monticello Rd", "$$", 4.7),
+("Citizen Burger Bar", 4349799944, "212 E Main St", "$$", 4.4),
+("Revolutionary Soup", 4342967687, "108 2nd St SW", "$", 4.3),
+("Peter Chang", 4342449818, "2162 Barracks Rd", "$$", 4.0),
+("Iron Paffles & Coffee", 4348063800, "214 W Water St", "$", 4.3)
+;
 
 DELETE FROM r_hours;
 INSERT INTO r_hours VALUES
 (1, "11:00","09:00", "10:30", "09:00", "10:30", "09:00", "10:30", "09:00", "10:30", "09:00", "10:30", "09:00", "11:30", "09:00", "all day"), 
-(3, "11:00", "10:00", "11:00", "10:00", "11:00", "10:00", "11:00", "10:00", "11:00", "10:00", "11:00", "11:00", "11:00", "11:00", "11:00", "10:00", "all day");
+(2, "","", "11:00", "08:00", "11:00", "08:00", "11:00", "08:00", "11:00", "08:00", "11:00", "08:00", "11:00", "08:00", "all day"),
+(3, "11:00", "10:00", "11:00", "10:00", "11:00", "10:00", "11:00", "10:00", "11:00", "10:00", "11:00", "11:00", "11:00", "11:00", "all day"),
+(4, "10:30","03:30", "10:30", "03:30", "10:30", "03:30", "10:30", "03:30", "10:30", "03:30", "10:30", "04:30", "10:30", "04:30", "all day");
 
 DELETE FROM customer; 
 ALTER TABLE customer AUTO_INCREMENT=1;
@@ -69,9 +77,41 @@ INSERT INTO menu (r_id, food_name, price, category, description) VALUES (1, "El 
 (3, "Pork, Egg, Bok Choy, Green Onion in Pork Stock Ramen", 7.95, "main", "Add Kimchi or Dumplings for 1.00"),
 (3, "Soy Ramen or Udon", 7.95, "main", "Add Kimchi or Dumplings for 1.00"),
 (3, "Miso Ramen or Udon", 7.95, "main", "Add Kimchi or Dumplings for 1.00"),
-(3, "Pork, Chicken or Tofu Dumpling in Pork Stock & Bok Choy", 7.95, "main", "")
+(3, "Pork, Chicken or Tofu Dumpling in Pork Stock & Bok Choy", 7.95, "main", ""),
+(12, "Pretzel Bites", 7.50, "munchies", "Signature Mellow dough, cut into bite-sized pieces, finished with garlic butter and parmesan. Served with a side of our Pabst Blue Ribbon™ beer cheese dip, it's the perfect shareable munchie"), 
+(12, "Bruschetta", 7.50, "munchies", "Diced tomatoes, basil and seasonings tossed in balsamic vinegar and olive oil. Topped with feta cheese and fresh basil, served on garlic toast points, and drizzled with a balsamic glaze"),
+(12, "Garlic Cheese Bread", 4.75, "munchies", "French bread topped with melted mozzarella, then baked. Served with a side of Mellow red sauce; Add Fresh Tomatoes for an Additional $0.5"), 
+(12, "Pretzels (half)", 4.75, "munchies", "Signature Mellow dough twisted into pretzels: Choice of garlic butter and parmesan with a side of Mellow red sauce or garlic butter and kosher salt with a side of mustard"),
+(12, "Pretzels (whole)", 8.25, "munchies", "Whole; Signature Mellow dough twisted into pretzels: Choice of garlic butter and parmesan with a side of Mellow red sauce or garlic butter and kosher salt with a side of mustard"),
+(12, "Meatball Trio", 7.50, "munchies", "Three meatballs grilled with fresh mozzarella on a bed of Mellow red sauce with shaved parmesan and basil, sprinkled with breadcrumbs"),
+(12, "Hummus", 7.00, "munchies", "Creamy hummus served with your choice of toasted pita wedges or carrots and celery. Garnished with paprika, basil and olive oil"),
+(12, "Oven Roasted Wings (Half (5))", 5.25, "munchies", "Crisp double-baked wings. Choose from hot, mild, BBQ, jerk, sweet Thai chili or naked. Served with celery, carrots and your choice of ranch or bleu cheese dressing"),
+(12, "Oven Roasted Wings (Whole (10))", 9.25, "munchies", "Crisp double-baked wings. Choose from hot, mild, BBQ, jerk, sweet Thai chili or naked. Served with celery, carrots and your choice of ranch or bleu cheese dressing"),
+(12, "Soup Of The Day", 5.75, "munchies", "Ask your server for details"),
+(12, "Greek Salad", 9.00, "salad", "Romaine and iceberg lettuce, shredded carrots, red cabbage, onions, cucumbers, green peppers, mushrooms, feta cheese, kalamata olives, roma tomatoes, pepperoncini and banana peppers"),
+(12, "Caesar Salad", 8.00, "salad", "Romaine lettuce tossed with Caesar dressing and topped with shaved parmesan and house-made croutons. Add all-natural chicken or applewood smoked bacon for an additional charge"),
+(12, "Enlightened Spinach Salad", 9.75, "salad", "Fresh spinach topped with dried cherries, apples, house-made candied pecans and feta cheese. Add all-natural chicken or applewood smoked bacon for an additional charge"),
+(12, "House Salad", 7.00, "salad", "Spring mix and romaine with roma tomatoes, cucumbers, black olives and onions topped with shaved parmesan. We suggest balsamic vinaigrette with this salad"),
+(12, "Chef Salad", 9.25, "salad", "Romaine and iceberg lettuce, shredded carrots, red cabbage, onions, cucumbers, green peppers, mushrooms, black olives, roma tomatoes, mozzarella, provolone and ham")
 ;
 
 DELETE FROM r_category; 
-INSERT INTO r_category (r_id, category) VALUES (1, "Salad"), (2, "Chinese"), (3, "Chinese"), (4, "Fast-food"), (5, "Thai");
+INSERT INTO r_category (r_id, category) VALUES (1, "Salad"), (2, "Chinese"), (3, "Chinese"), 
+(4, "Fast-food"), (5, "Thai"), (6, "Chinese"), 
+(7, "Thai"),  (8, "Sandwiches"),  (8, "Breakfast"),  
+(9, "Indian"),  (10, "American"), (11, "American"),  
+(11, "Bar"),  (12, "Pizza"),  (13, "Salad"), 
+(14, "Pizza"), (14, "Italian"), (15, "American"), 
+(16, "American"), (17, "Chinese"), (18, "Sandwiches"), 
+(18, "American");
 
+DELETE FROM c_phone;
+INSERT INTO c_phone (c_id, phone_numb) VALUES (1, 70312345678), (2, 1231231234);
+
+DELETE FROM supplier;
+INSERT INTO supplier (sname, street, city, state) VALUES 
+("supplier1", "123 Fake St.", "Charlottesville", "VA"); 
+
+DELETE FROM provide;
+INSERT INTO provide VALUES 
+(1, 1, 5.00, "kale"),(1, 1, 5.00, "spinach"); 

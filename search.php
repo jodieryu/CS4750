@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -40,9 +44,7 @@
       </li>
     </ul>
 
-    <form class="form-inline" action="login.php">
-    <button class="btn btn-outline-success">Login</button>
-    </form>
+    <?php include 'loginHeader.php'; ?>
     
   </div>
 </nav>

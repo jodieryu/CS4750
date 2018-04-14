@@ -89,7 +89,6 @@ DROP TABLE IF EXISTS provide;
 CREATE TABLE provide(
 	s_id INT NOT NULL,
     r_id INT NOT NULL,
-	price DECIMAL(6,2) NOT NULL,
     item VARCHAR(20) NOT NULL,
     PRIMARY KEY (s_id, r_id, item),
     FOREIGN KEY (s_id) REFERENCES supplier(s_id),

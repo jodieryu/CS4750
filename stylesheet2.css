@@ -69,7 +69,7 @@ p {
 
 .rightCol {
 	width: 55%; 
-	float:right;
+	float:left;
 	/*background-color: yellow;*/
 	display: inline-block;
 }

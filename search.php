@@ -1,4 +1,4 @@
-<?php
+  <?php
 session_start();
 ?>
 
@@ -74,11 +74,11 @@ session_start();
             exit;
           }
            // Form the SQL query (a SELECT query)
-           $sql="SELECT *
-            FROM restaurant
+           $sql="SELECT DISTINCT r_id, rname, phone_num, street, price_range, rating_google, num_of_reviews
+            FROM restaurant INNER JOIN r_category USING (r_id)
             WHERE rname
             LIKE
-            '%{$_POST['search']}%'";
+            '%{$_POST['search']}%' OR category = '{$_POST['search']}'";
            $result = mysqli_query($con,$sql);
            // Print the data from the table row by row
            $i = 1;

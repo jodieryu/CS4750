@@ -74,6 +74,12 @@ p {
 	display: inline-block;
 }
 
+.mostrightCol {
+  float:right;
+  /*background-color: yellow;*/
+  display: inline-block;
+}
+
 .rInfo {
 	margin-left: 7%;
 }

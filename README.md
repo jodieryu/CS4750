@@ -1,4 +1,4 @@
-# CS4750 - Databases Final Project
+# CS4750 - Database Systems Final Project
 
 Group members: Katherine Qian, Jodie Ryu, Youbeen Shim, Joshua Ya.
 

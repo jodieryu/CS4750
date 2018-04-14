@@ -1,5 +1,3 @@
-USE db;
-
 DELETE FROM restaurant;
 ALTER TABLE restaurant AUTO_INCREMENT=1;
 INSERT INTO restaurant (rname, phone_num, street, price_range, rating_google) VALUES
@@ -109,9 +107,12 @@ DELETE FROM c_phone;
 INSERT INTO c_phone (c_id, phone_numb) VALUES (1, 70312345678), (2, 1231231234);
 
 DELETE FROM supplier;
+ALTER TABLE supplier AUTO_INCREMENT=1;
 INSERT INTO supplier (sname, street, city, state) VALUES 
-("supplier1", "123 Fake St.", "Charlottesville", "VA"); 
+("Wolf Creek Farm", "4345 Wolftown-Hood Road", "Madison", "VA")
+;
 
 DELETE FROM provide;
 INSERT INTO provide VALUES 
-(1, 1, 5.00, "kale"),(1, 1, 5.00, "spinach"); 
+(14, 1, "beef")
+; 

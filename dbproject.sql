@@ -43,7 +43,7 @@ CREATE TABLE customer(
     city VARCHAR(20),
     state VARCHAR(20),
     username VARCHAR(20) NOT NULL UNIQUE,
-    pwd VARCHAR(20) NOT NULL
+    pwd VARCHAR(255) NOT NULL
 );
 
 DROP TABLE IF EXISTS c_phone;

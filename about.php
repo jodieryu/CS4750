@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,13 +39,11 @@
         <a class="nav-link" href="#">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Categories</a>
+        <a class="nav-link" href="./categories.php">Categories</a>
       </li>
     </ul>
 
-    <form class="form-inline" action="login.php">
-    <button class="btn btn-outline-success">Login</button>
-    </form>
+    <?php include 'loginHeader.php'; ?>
     
   </div>
 </nav>

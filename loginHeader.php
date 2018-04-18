@@ -1,7 +1,7 @@
 <?php if(isset($_SESSION["username"])) : ?>
 	<ul class="nav navbar-nav navbar-right">
 		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome <?php echo $_SESSION["username"];?>!<span class="caret"></span></a>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome <?php echo $_SESSION["fname"];?>!<span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<li><a href="bucketListPage.html">Bucket List</a>
 				</li>

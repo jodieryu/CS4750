@@ -50,48 +50,48 @@ session_start();
 
   <body id="categoriesPage">
     <div class="container">
-      <div class=categoriesHeader>
+      <div class=categoriesHeader >
         <h1> Categories &amp; Cuisines </h1>
       </div>
      
      <div class="categoryItems">
         <div class="category">
-          <a href="#">
+          <a href="javascript:;" onclick="selectedCategory('American');">
             <img src="./images/americanCuisine.png">
           </a>
         </div>
         <div class="category">
-          <a href="#">
+          <a href="javascript:;" onclick="selectedCategory('Chinese');">
             <img src="./images/chineseCuisine.png">
           </a>
         </div>
         <div class="category">
-          <a href="#">
+          <a href="javascript:;" onclick="selectedCategory('Fast-food');">
             <img src="./images/Fastfood.png">
           </a>
         </div>
         <div class="category">
-          <a href="#">
+          <a href="javascript:;" onclick="selectedCategory('Indian');">
             <img src="./images/indianCuisine.png">
           </a>
         </div>
         <div class="category">
-          <a href="#">
+          <a href="javascript:;" onclick="selectedCategory('Pizza');">
             <img src="./images/pizza.png">
           </a>
         </div>
         <div class="category">
-          <a href="#">
+          <a href="javascript:;" onclick="selectedCategory('Salad');">
             <img src="./images/salads.png">
           </a>
         </div>
         <div class="category">
-          <a href="#">
+          <a href="javascript:;" onclick="selectedCategory('sandwiches');">
             <img src="./images/sandwiches.png">
           </a>
         </div>
         <div class="category">
-          <a href="#">
+          <a href="javascript:;" onclick="selectedCategory('Thai');">
             <img src="./images/thaiCuisine.png">
           </a>
         </div>
@@ -99,6 +99,24 @@ session_start();
       </div>
 
     </div>
+
+     <form class="category" action="search.php" method="post" style = "visibility: hidden"  id="categoryForm">
+            <input type="text" placeholder="Find burgers, pasta, bars.." name="search" id="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+
+
+    <script>
+      function selectedCategory(category){
+        document.getElementById("search").value=category;
+        document.getElementById("categoryForm").submit();
+        /*var search = category;
+        $.post('search2.php', {variable: search});*/
+      }
+    </script>
   </body>
+
+
 
 </html>

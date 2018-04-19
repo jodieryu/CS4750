@@ -6,6 +6,11 @@ if(!isset($_SESSION["c_id"])) {
   exit();
 }
 
+if (!isset($_POST['selected_r_id'])) {
+	header("Location: ./");
+	exit();
+}
+
 // Connect to DB
 require_once('./library.php');
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);

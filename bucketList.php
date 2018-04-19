@@ -7,6 +7,9 @@ session_start();
     <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
     <title>Cville Foodies | BucketList</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -17,6 +20,26 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" language="javascript">
+      function addToBucketList(r_id, c_id) {
+        alert(r_id);
+        alert(c_id);
+        // set eaten_at to T in the DB
+        $.post("addVisit.php",
+          { selected_r_id: r_id, 
+            curr_user_id: c_id},
+          function(data,status){
+            alert(data);
+        });
+        // set the button as visited
+        document.getElementById(r_id).onclick = function() { alert("Restaurant has already been visited!"); }
+        document.getElementById(r_id).classList.remove('btn-outline-primary');
+        document.getElementById(r_id).classList.add('btn-success');
+        document.getElementById(r_id).classList.add('disabled');
+        document.getElementById(r_id).innerText = "Restaurant Visited!";
+      }
+    </script>
   </head>
  
   <!-- Navbar -->
@@ -68,18 +91,18 @@ session_start();
           // Form the SQL query (a SELECT query)
           $sql="SELECT *
           FROM restaurant INNER JOIN bucketlist_item USING (r_id)
-          WHERE c_id = '{$_SESSION['c_id']}'";
+          WHERE c_id = '{$_SESSION['c_id']}' and eaten_at = 'F'";
           $result = mysqli_query($con,$sql);
 
           if (mysqli_num_rows($result)==0) { 
-            echo "<li> No Search Results found!</li>";
+            echo "<br/><p style='text-align:center'> No Search Results found! </p>";
             exit;
           }
           $i = 1;
           while($row = mysqli_fetch_array($result)) {
             $tableRow = "
             <div class=\"bucketListItem\">
-              <h3> $i. {$row['rname']} ({$row['price_range']})</h3> <button class=\"btn btn-outline-success\">Visit the Restaurant</button>
+              <h3> $i. {$row['rname']} ({$row['price_range']})</h3> <button id=\"{$row['r_id']}\" onclick='addToBucketList(\"{$row['r_id']}\", \"{$row['c_id']}\");' class=\"btn btn-outline-primary\">Visit the Restaurant</button>
               <p> <b>Phone #:</b> {$row['phone_num']} <b>Address:</b> {$row['street']}, Charlottesville, VA<br/> <b>Rating:</b> {$row['rating_google']}/5.0 </p>
             </div>";
             echo $tableRow;

@@ -103,7 +103,7 @@ session_start();
               <div class=\"outerDiv\">
                 <div class=\"leftCol\">
                   <h2 class=\"rName\">$i. {$row['rname']}</h2>
-                  <p class=\"rInfo\"><span class=\"rCost\">{$row['price_range']}</span> <span class=\"rReview\">{$row['num_of_reviews']} Reviews</span></p>
+                  <p class=\"rInfo\"><span class=\"rCost\">{$row['price_range']}</span> <span class=\"rRating\"> {$row['rating_google']} / 5</span></p>
                 </div>
                 <div class=\"rightCol\">
                   <p>{$row['street']}, Charlottesville, VA</p>

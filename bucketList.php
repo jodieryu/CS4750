@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,10 +21,10 @@
  
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <a href="#" class="pull-left">
+    <a href="./" class="pull-left">
         <img src="./images/logo.png">
     </a> 
-    <a href="#" class="navbar-brand">Cville Foodies</a>
+    <a href="./" class="navbar-brand">Cville Foodies</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,20 +32,17 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./about.html">About</a>
+        <a class="nav-link" href="./about.php">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Categories</a>
+        <a class="nav-link" href="./categories.php">Categories</a>
       </li>
     </ul>
 
-    <form class="form-inline">
-      <!--  ////PUT PHP SCRIPT HERE////  -->
-      <p>Welcome! username goes here</p>
-    </form>
+    <?php include 'loginHeader.php'; ?>
     
   </div>
 </nav>
@@ -51,9 +51,43 @@
     <div class="container">
       <div class=bucketListHeader></div>
       <div class="bucketListItems">
-        <div class="bucketListItem1"></div>
-        <div class="bucketListItem2"></div>
-        <div class="bucketListItem3"></div>
+        <?php
+          if(!isset($_SESSION["username"])) {
+            echo "<br/><p style='text-align:center'> You are not logged in! Please log in to see your BucketList! </p>";
+            exit();
+          }
+          require_once('./library.php');
+          $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+          // Check connection
+          if (mysqli_connect_errno()) {
+          echo("Can't connect to MySQL Server. Error code: " .
+          mysqli_connect_error());
+          return null;
+          }
+
+          // Form the SQL query (a SELECT query)
+          $sql="SELECT *
+          FROM restaurant INNER JOIN bucketlist_item USING (r_id)
+          WHERE c_id = '{$_SESSION['c_id']}'";
+          $result = mysqli_query($con,$sql);
+
+          if (mysqli_num_rows($result)==0) { 
+            echo "<li> No Search Results found!</li>";
+            exit;
+          }
+          $i = 1;
+          while($row = mysqli_fetch_array($result)) {
+            $tableRow = "
+            <div class=\"bucketListItem\">
+              <h3> $i. {$row['rname']} ({$row['price_range']})</h3> <button class=\"btn btn-outline-success\">Visit the Restaurant</button>
+              <p> <b>Phone #:</b> {$row['phone_num']} <b>Address:</b> {$row['street']}, Charlottesville, VA<br/> <b>Rating:</b> {$row['rating_google']}/5.0 </p>
+            </div>";
+            echo $tableRow;
+            $i++;
+           }
+
+          mysqli_close($con);
+        ?> 
       </div>
     </div>
   </body>

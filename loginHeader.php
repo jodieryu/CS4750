@@ -3,7 +3,7 @@
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome <?php echo $_SESSION["fname"];?>!<span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><a href="bucketListPage.html">Bucket List</a>
+				<li><a href="bucketList.php">Bucket List</a>
 				</li>
 				<li>
 					<form class="form-inline" action="logout.php">

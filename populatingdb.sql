@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0; 
+
 DELETE FROM restaurant;
 ALTER TABLE restaurant AUTO_INCREMENT=1;
 INSERT INTO restaurant (rname, phone_num, street, price_range, rating_google) VALUES
@@ -111,5 +113,5 @@ INSERT INTO supplier (sname, street, city, state) VALUES
 
 DELETE FROM provide;
 INSERT INTO provide VALUES 
-(14, 1, "beef")
+(1, 14, "beef")
 ; 

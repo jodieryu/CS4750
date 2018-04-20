@@ -90,14 +90,6 @@ CREATE TABLE provide(
     FOREIGN KEY (s_id) REFERENCES supplier(s_id),
     FOREIGN KEY (r_id) REFERENCES restaurant(r_id)
 );
-	c_id INT NOT NULL,
-    r_id INT NOT NULL,
-    rating INT NOT NULL,
-    description TEXT, 
-    PRIMARY KEY (c_id, r_id), #assume customers can only review a restaurant once
-    FOREIGN KEY (c_id) REFERENCES customer(c_id) ON DELETE CASCADE,
-    FOREIGN KEY (r_id) REFERENCES restaurant(r_id) ON DELETE CASCADE
-);
 
 #changed it such that not every customer has to have a favorite restaurant
 #(got rid of total participation)

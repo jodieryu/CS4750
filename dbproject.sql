@@ -33,7 +33,7 @@ CREATE TABLE r_hours(
     fri_open_time VARCHAR(5) NOT NULL,
     fri_close_time VARCHAR(5) NOT NULL,
     sat_open_time VARCHAR(5) NOT NULL,
-    sat__close_time VARCHAR(5) NOT NULL,
+    sat_close_time VARCHAR(5) NOT NULL,
     description VARCHAR(20), #ex: lunch, dinner, dessert, bar, etc. 	
     PRIMARY KEY (r_id, description),
     FOREIGN KEY (r_id) REFERENCES restaurant(r_id)

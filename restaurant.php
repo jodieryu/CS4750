@@ -65,16 +65,10 @@ session_start();
 </nav>
 
   <body id="homepage">
-      <div class="container" id="searchResultBar">
-        <form class="searchBar" action="search.php" method="post">
-            <input type="text" placeholder="Find burgers, pasta, bars.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-            <button type="button" id="filterButton"><i class="fa">FILTER</i></button>
-        </form>
-      </div>
 
       <ul class="list">
         <?php
+           $rname = $_GET["r"] ;
            require_once('./library.php');
            $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
            // Check connection
@@ -84,45 +78,46 @@ session_start();
            return null;
            }
            
-          if (!isset($_POST["search"]) || empty($_POST["search"])) {
-            echo "<li> No Search Results found!</li>";
-            exit;
-          }
            // Form the SQL query (a SELECT query)
-           $sql="SELECT DISTINCT r_id, rname, phone_num, street, price_range, rating_google, num_of_reviews
-            FROM restaurant INNER JOIN r_category USING (r_id)
-            WHERE rname
-            LIKE
-            '%{$_POST['search']}%' OR category = '{$_POST['search']}'";
+          $sql="SELECT *
+            FROM restaurant LEFT JOIN r_hours USING (r_id) /*LEFT JOIN r_category USING (r_id) LEFT JOIN menu USING (r_id) INNER JOIN provide USING (r_id) INNER JOIN supplier USING (s_id)*/
+            WHERE rname = '{$rname}'";
            $result = mysqli_query($con,$sql);
            // Print the data from the table row by row
-           $i = 1;
-           if (mysqli_num_rows($result)==0) { 
-            echo "<li> No Search Results found!</li>";
-            exit;
-          }
-           while($row = mysqli_fetch_array($result)) {
+
+           if (mysqli_num_rows($result)!= 0) {
+            $row = mysqli_fetch_array($result);
             $tableRow = "<li>
               <div class=\"outerDiv\">
+              <div class=\"mostrightCol\">
+                  <button id=\"{$row['r_id']}\" onclick='addToBucketList(\"{$row['r_id']}\");' class=\"btn btn-outline-success\">Add to BucketList!</button>
+                </div>
                 <div class=\"leftCol\">
-                  <h2 class=\"rName\" onclick=\"window.location.href='restaurant.php?r={$row['rname']}'\">$i. {$row['rname']}</h2>
+                  <h2 class=\"rName\" onclick=\"window.location.href='restaurant.php?r={$row['rname']}'\">{$row['rname']}</h2>
                   <p class=\"rInfo\"><span class=\"rCost\">{$row['price_range']}</span> <span class=\"rRating\"> {$row['rating_google']} / 5</span></p>
                 </div>
                 <div class=\"rightCol\">
                   <p>{$row['street']}, Charlottesville, VA</p>
                   <p>{$row['phone_num']}</p>
                 </div>
-                <div class=\"mostrightCol\">
-                  <button id=\"{$row['r_id']}\" onclick='addToBucketList(\"{$row['r_id']}\");' class=\"btn btn-outline-success\">Add to BucketList!</button>
+                <div class=\"leftCol\">
+                  <p class=\"rName\">Sunday Hours: {$row['sun_open_time']} - {$row['sun_close_time']}</p>
+                  <p class=\"rName\">Monday Hours: {$row['mon_open_time']} - {$row['mon_close_time']}</p>
+                  <p class=\"rName\">Tuesday Hours: {$row['tues_open_time']} - {$row['tues_close_time']}</p>
+                  <p class=\"rName\">Wednesday Hours: {$row['wed_open_time']} - {$row['wed_close_time']}</p>
+                  <p class=\"rName\">Thursday Hours: {$row['thurs_open_time']} - {$row['thurs_close_time']}</p>
+                  <p class=\"rName\">Friday Hours: {$row['fri_open_time']} - {$row['fri_close_time']}</p>
+                  <p class=\"rName\">Saturday Hours: {$row['sat_open_time']} - {$row['sat_close_time']}</p>
+                  
                 </div>
               </div>
             </li>";
              echo $tableRow;
-             $i++;
-           }
+          } 
+
            mysqli_close($con);
         ?> 
       </ul>
   </body>
 
-</html>
+</html>   

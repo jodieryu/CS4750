@@ -199,4 +199,37 @@ label {
   margin-right: 5%;
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * *
+            Visited Restaurant Page
+* * * * * * * * * * * * * * * * * * * * * * * */
+#visitedListPage {
+  padding-top: 30px;
+}
+
+.visitedListHeader {
+  background-image: url("./images/header-food.png");
+  width: 100%;
+  height: 300px;
+  margin: auto;
+  background-size: cover;
+}
+
+.visitedListItems {
+  /*border: 1px solid black;*/
+  overflow: hidden; /* will contain if #first is longer than #second */
+}
+
+.visitedListItem {
+  height: 100px;
+  border: 1px solid red;
+  margin: 20px;
+  padding-left: 5%;
+}
+
+.visitedListItem button {
+  float: right;
+  width: 30%;
+  margin-right: 5%;
+}
+
 

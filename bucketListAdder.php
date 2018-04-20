@@ -24,7 +24,7 @@ if (mysqli_connect_errno()) {
 // Form the SQL query (a SELECT query)
 $sql="SELECT r_id
 FROM bucketlist_item
-WHERE r_id = '{$_POST['selected_r_id']}'";
+WHERE r_id = '{$_POST['selected_r_id']}' and c_id = '{$_SESSION["c_id"]}'";
 
 $result = mysqli_query($con,$sql);
 

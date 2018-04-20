@@ -103,9 +103,6 @@ INSERT INTO r_category (r_id, category) VALUES (1, "Salad"), (2, "Chinese"), (3,
 (16, "American"), (17, "Chinese"), (18, "Sandwiches"), 
 (18, "American");
 
-DELETE FROM c_phone;
-INSERT INTO c_phone (c_id, phone_numb) VALUES (1, 70312345678), (2, 1231231234);
-
 DELETE FROM supplier;
 ALTER TABLE supplier AUTO_INCREMENT=1;
 INSERT INTO supplier (sname, street, city, state) VALUES 

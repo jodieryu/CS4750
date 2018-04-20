@@ -99,10 +99,6 @@ session_start();
             WHERE t2.c_id IS NULL AND t1.c_id = {$_SESSION['c_id']} AND t1.eaten_at = 'T') t3 using (r_id)";
           $result = mysqli_query($con,$sql);
 
-          if (mysqli_num_rows($result)==0) { 
-            echo "<br/><p style='text-align:center'> No items in your BucketList! </p>";
-            exit;
-          }
           $i = 1;
           while($row = mysqli_fetch_array($result)) {
             $tableRow = "
@@ -120,8 +116,8 @@ session_start();
             WHERE c_id = '{$_SESSION['c_id']}'";
           $result2 = mysqli_query($con,$sql2);
 
-          if (mysqli_num_rows($result2)==0) { 
-            echo "<br/><p style='text-align:center'> No items in your BucketList! </p>";
+          if (mysqli_num_rows($result)==0 && mysqli_num_rows($result2)==0) { 
+            echo "<br/><p style='text-align:center'> No Restaurants Visited!  </p>";
             exit;
           }
 

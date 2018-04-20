@@ -7,6 +7,8 @@
 				</li>
 				<li><a href="visitedRestaurants.html">Visited Restaurants</a>
 				</li>
+				<li><a href="achievementsPage.php">Achievements</a>
+				</li>
 				<li>
 					<form class="form-inline" action="logout.php">
 						<button class="btn btn-outline-danger">Log out</button>

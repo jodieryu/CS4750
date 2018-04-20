@@ -94,7 +94,7 @@ session_start();
           $result = mysqli_query($con,$sql);
 
           if (mysqli_num_rows($result)==0) { 
-            echo "<br/><p style='text-align:center'> No items on your BucketList! </p>";
+            echo "<br/><p style='text-align:center'> No items in your BucketList! </p>";
             exit;
           }
           $i = 1;

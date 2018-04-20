@@ -1,6 +1,6 @@
-<!-- <?php
+<?php
 session_start();
-?> -->
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,7 +21,31 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript">
+      function checkBadges() {
+        // get user's achievements
+        $.get("checkAchievements.php",
+          function(data,status){
+            var jsonData = JSON.parse(data);
+            if (jQuery.isEmptyObject(jsonData)) {
+              alert("You are not logged in! Please log in to see your Achievements!");
+              return;
+            }
+            var badges = jsonData[0];
+            // Unfade if user has badge
+            if (badges["r1"] == 'T') document.getElementById("oneVisited").classList.remove('badgeFaded');
+            if (badges["r5"] == 'T') document.getElementById("fiveVisited").classList.remove('badgeFaded');
+            if (badges["r10"] == 'T') document.getElementById("tenVisited").classList.remove('badgeFaded');
+            if (badges["r100"] == 'T') document.getElementById("hundredVisited").classList.remove('badgeFaded');
+            if (badges["bl1"] == 'T') document.getElementById("oneAdded").classList.remove('badgeFaded');
+            if (badges["bl5"] == 'T') document.getElementById("fiveAdded").classList.remove('badgeFaded');
+            if (badges["bl10"] == 'T') document.getElementById("tenAdded").classList.remove('badgeFaded');
+            if (badges["bl100"] == 'T') document.getElementById("hundredAdded").classList.remove('badgeFaded');
+        });
+      }
 
+      checkBadges();
+    </script>
   </head>
 
   <!-- Navbar -->
@@ -47,7 +71,7 @@ session_start();
       </li>
     </ul>
 
-   <!--  <?php include 'loginHeader.php'; ?> -->
+    <?php include 'loginHeader.php'; ?>
     
   </div>
 </nav>
@@ -95,7 +119,7 @@ session_start();
       			</center>
       		</div>
       		<!--badge for adding 5 restaurants-->
-      		<div class="badgeForAdding badgeFaded" id="fivedAdded">
+      		<div class="badgeForAdding badgeFaded" id="fiveAdded">
       			<center><img src="./images/fiveAdded.png">
       				<h5>5 Restaurant Added!</h5>
       				<p> You're an ethnic explorer! You've added five different restaurants to your bucketlist.</p>

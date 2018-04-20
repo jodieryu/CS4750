@@ -5,6 +5,8 @@
 			<ul class="dropdown-menu">
 				<li><a href="bucketList.php">Bucket List</a>
 				</li>
+				<li><a href="visitedRestaurants.html">Visited Restaurants</a>
+				</li>
 				<li>
 					<form class="form-inline" action="logout.php">
 						<button class="btn btn-outline-danger">Log out</button>

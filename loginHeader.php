@@ -5,7 +5,7 @@
 			<ul class="dropdown-menu">
 				<li><a href="bucketList.php">Bucket List</a>
 				</li>
-				<li><a href="visitedRestaurants.html">Visited Restaurants</a>
+				<li><a href="visitedRestaurants.php">Visited Restaurants</a>
 				</li>
 				<li><a href="achievementsPage.php">Achievements</a>
 				</li>

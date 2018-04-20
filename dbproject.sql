@@ -1,5 +1,10 @@
 SET FOREIGN_KEY_CHECKS=0; 
 
+#drop previously create tables 
+DROP TABLE IF EXISTS c_phone;
+DROP TABLE IF EXISTS r_cuisine;
+DROP TABLE IF EXISTS review; 
+
 DROP TABLE IF EXISTS restaurant;
 CREATE TABLE restaurant( 
 	r_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -46,15 +51,6 @@ CREATE TABLE customer(
     pwd VARCHAR(255) NOT NULL
 );
 
-DROP TABLE IF EXISTS c_phone;
-CREATE TABLE c_phone(
-	c_id INT NOT NULL,
-    phone_numb INT (10) NOT NULL,
-    PRIMARY KEY (c_id, phone_numb),
-    FOREIGN KEY (c_id) REFERENCES customer(c_id) ON DELETE CASCADE
-);
-
-DROP TABLE IF EXISTS r_cuisine;
 DROP TABLE IF EXISTS r_category;
 CREATE TABLE r_category(
 	r_id INT NOT NULL, 
@@ -94,9 +90,6 @@ CREATE TABLE provide(
     FOREIGN KEY (s_id) REFERENCES supplier(s_id),
     FOREIGN KEY (r_id) REFERENCES restaurant(r_id)
 );
-
-DROP TABLE IF EXISTS review; 
-CREATE TABLE review(
 	c_id INT NOT NULL,
     r_id INT NOT NULL,
     rating INT NOT NULL,
@@ -117,25 +110,30 @@ CREATE TABLE favorite(
     FOREIGN KEY (r_id) REFERENCES restaurant(r_id) ON DELETE CASCADE
 );
 
-#added a bucketlist
-DROP TABLE IF EXISTS bucketlist;
-CREATE TABLE bucketlist(
-	c_id INT NOT NULL,
-    bl_name VARCHAR(20) NOT NULL,
-    PRIMARY KEY (c_id, bl_name),
-    FOREIGN KEY (c_id) REFERENCES customer(c_id) ON DELETE CASCADE
-);
-
 DROP TABLE IF EXISTS bucketlist_item;
 CREATE TABLE bucketlist_item(
 	c_id INT NOT NULL,
-    bl_name VARCHAR(20) NOT NULL,
     r_id INT NOT NULL,
     eaten_at ENUM('T','F') DEFAULT 'F',
-    PRIMARY KEY (c_id, bl_name, r_id),
-	FOREIGN KEY (c_id, bl_name) REFERENCES bucketlist(c_id, bl_name) ON DELETE CASCADE,
+    PRIMARY KEY (c_id, r_id),
+	FOREIGN KEY (c_id) REFERENCES customer(c_id) ON DELETE CASCADE,
     FOREIGN KEY (r_id) REFERENCES restaurant(r_id) ON DELETE CASCADE
 );
+
+DROP TABLE IF EXISTS achievements;
+CREATE TABLE achievements(
+	c_id INT NOT NULL PRIMARY KEY, 
+    r1 	ENUM('T','F') DEFAULT 'F',
+    r5 ENUM('T','F') DEFAULT 'F',
+    r10 ENUM('T','F') DEFAULT 'F',
+    r100 ENUM('T','F') DEFAULT 'F',
+    bl1 ENUM('T','F') DEFAULT 'F',
+    bl5 ENUM('T','F') DEFAULT 'F', 
+    bl10 ENUM('T','F') DEFAULT 'F',
+    bl100 ENUM('T','F') DEFAULT 'F',
+    FOREIGN KEY (c_id) REFERENCES customer(c_id) ON DELETE CASCADE
+);
+
 
 #do you make another table for self referencing - friend ?
 #what is order (netween customer and restaurant)?

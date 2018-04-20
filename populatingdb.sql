@@ -115,3 +115,6 @@ DELETE FROM provide;
 INSERT INTO provide VALUES 
 (1, 14, "beef")
 ; 
+
+DELETE FROM achievements;
+INSERT INTO achievements (c_id) VALUES (1), (2);

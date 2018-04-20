@@ -232,4 +232,56 @@ label {
   margin-right: 5%;
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * *
+            Achievements Page
+* * * * * * * * * * * * * * * * * * * * * * * */
+#achievementsPage {
+  padding-top: 40px;
+}
 
+.achievementsHeader {
+  background-image: url("./images/achievementsHeaderImage.png");
+  width: 100%;
+  height: 200px;
+  margin: auto;
+  background-size: cover;
+  margin-bottom: 20px;
+}
+
+.badgesForVisitingRow {
+  margin-bottom: 20px;
+}
+
+.badgeForVisiting {
+  width: 270px;
+  height: 300px;
+  border: 1px solid black;
+  display: inline-block;
+  font-family: Quicksand;
+  padding: 20px;
+}
+
+.badgeForVisiting img {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+}
+
+.badgeFaded {
+  opacity: 0.5;
+}
+
+.badgeForAdding {
+  width: 270px;
+  height: 300px;
+  border: 1px solid black;
+  display: inline-block;
+  font-family: Quicksand;
+  padding: 20px;
+}
+
+.badgeForAdding img {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+}

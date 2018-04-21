@@ -150,7 +150,7 @@ if(isset($_SESSION["username"])) {
                 </div>
                 <div class="form-group">
                   <label class="sr-only" for="form-password">Password</label>
-                  <input type="text" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                  <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
                 </div>
                 <button type="submit" class="btn">Sign me up!</button>
               </form>

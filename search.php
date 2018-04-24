@@ -37,8 +37,15 @@ session_start();
 
       // Filter the results
       function filterResults(filter) {
-        alert(filter);
+        $.post("filter.php",
+          { filter_id: filter },
+          function(data,status){
+                $("#results").html(data);
+
+        });
+        // $("#results").html("");
       } 
+
     </script>
   </head>
  
@@ -80,27 +87,26 @@ session_start();
               <ul class="dropdown-menu">
                 <li>PRICE RANGE
                 </li>
-                <li><a href="javascript:filterResults('0')">$</a>
+                <li><a href="javascript:filterResults(0)">$</a>
                 </li>
-                <li><a href="javascript:filterResults('1')">$$</a>
+                <li><a href="javascript:filterResults(1)">$$</a>
                 </li>
-                <li><a href="javascript:filterResults('2')">$$$</a>
+                <li><a href="javascript:filterResults(2)">$$$</a>
                 </li>
-                <li><a href="javascript:filterResults('4')">$$$$</a>
+                <li><a href="javascript:filterResults(3)">$$$$</a>
                 </li>
                 <li>RATING
                 </li>
-                <li><a href="javascript:filterResults('5')">>4.0</a>
+                <li><a href="javascript:filterResults(4)">>=4.5</a>
                 </li>
-                <li><a href="javascript:filterResults('6')">>3.0</a>
+                <li><a href="javascript:filterResults(5)">>=4.0</a>
                 </li>
-                <li><a href="javascript:filterResults('7')">>2.0</a>
+                <li><a href="javascript:filterResults(6)">>=3.5</a>
                 </li>
               </ul>
         </form>
       </div>
-
-      <ul class="list">
+      <ul class="list" id="results">
         <?php
            require_once('./library.php');
            require_once('./library2.php');
@@ -114,9 +120,11 @@ session_start();
            }
            
           if (!isset($_POST["search"]) || empty($_POST["search"])) {
-            echo "<li> No Search Results found!</li>";
+            echo "<li id='no_results'> No Search Results found!</li>";
+            unset($_SESSION['search']);
             exit;
           }
+          $_SESSION["search"] = $_POST["search"];
            // Form the SQL query (a SELECT query)
            $sql="SELECT DISTINCT r_id, rname, phone_num, street, price_range, rating_google, num_of_reviews
             FROM restaurant INNER JOIN r_category USING (r_id)
@@ -127,10 +135,12 @@ session_start();
            // Print the data from the table row by row
            $i = 1;
            if (mysqli_num_rows($result)==0) { 
-            echo "<li> No Search Results found!</li>";
+            echo "<li id='no_results'> No Search Results found!</li>";
+            unset($_SESSION['search']);
             exit;
           }
 
+          // CREATE or REPLACE VIEW search for filtering
           $sql2 = "CREATE OR REPLACE VIEW search AS 
           SELECT DISTINCT r_id, rname, phone_num, street, price_range, rating_google, num_of_reviews 
           FROM restaurant INNER JOIN r_category USING (r_id) 

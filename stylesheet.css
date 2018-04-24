@@ -293,6 +293,10 @@ label {
   display: inline-block;
 }
 
+.rName {
+  font-weight: bold;
+}
+
 .rHours {
   font-size:24px;
 }
@@ -306,6 +310,15 @@ label {
   display:block;
   background-color: #FFFFFF;
   padding:5px;
+  box-shadow: inset 0 1px 0 #fff;
+  min-height: 100px
+}
+
+.list > sli {
+  display:block;
+  background-color: #FFFFFF;
+  padding:5px;
+  border-top: 1px solid gray;
   box-shadow: inset 0 1px 0 #fff;
   min-height: 100px
 }

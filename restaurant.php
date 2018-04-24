@@ -80,16 +80,15 @@ session_start();
            
            // Form the SQL query (a SELECT query)
           $sql="SELECT *
-            FROM restaurant LEFT JOIN r_hours USING (r_id) /*LEFT JOIN r_category USING (r_id) LEFT JOIN menu USING (r_id) INNER JOIN provide USING (r_id) INNER JOIN supplier USING (s_id)*/
+            FROM restaurant LEFT JOIN r_hours USING (r_id)
             WHERE rname = '{$rname}'";
            $result = mysqli_query($con,$sql);
-           // Print the data from the table row by row
 
            if (mysqli_num_rows($result)!= 0) {
             $row = mysqli_fetch_array($result);
             $tableRow = "<li>
               <div class=\"outerDiv\">
-              <div class=\"mostrightCol\">
+                <div class=\"mostrightCol\">
                   <button id=\"{$row['r_id']}\" onclick='addToBucketList(\"{$row['r_id']}\");' class=\"btn btn-outline-success\">Add to BucketList!</button>
                 </div>
                 <div class=\"leftCol\">
@@ -114,6 +113,83 @@ session_start();
             </li>";
              echo $tableRow;
           } 
+
+
+          $sql2="SELECT *
+            FROM restaurant INNER JOIN menu USING (r_id) /*INNER JOIN provide USING (r_id) INNER JOIN supplier USING (s_id)*/
+            WHERE rname = '{$rname}' ORDER BY category, price ASC";
+          $result2 = mysqli_query($con,$sql2);
+
+          $i = 1;
+          if (mysqli_num_rows($result2)==0) { 
+            echo "<li><div class=\"outerDiv\">
+                <div class=\"leftCol\">
+                  <p class=\"rName\">MENU</p>
+                  <p class=\"rName\">No menu to display :(</p>
+                </div>
+                </li>";
+          }
+
+          if (mysqli_num_rows($result2)>0) { 
+            echo "<li>
+              <div class=\"outerDiv\">
+                <div class=\"leftCol\">
+                  <p class=\"rName\">MENU</p>
+                </div>
+            </li>";
+          }
+           while($row = mysqli_fetch_array($result2)) {
+            $tableRow = "<li>
+              <div class=\"outerDiv\">
+                <div class=\"leftCol\">
+                  <p class=\"rName\">$i.  {$row['food_name']} ({$row['category']})</p>
+                  <p class=\"rName\">{$row['description']}</p>
+                </div>
+                <div class=\"mostrightCol\">
+                  <p>{$row['price']}</p>
+                </div>
+            </li>";
+             echo $tableRow;
+             $i++;
+           }
+
+          $sql3="SELECT *
+          FROM restaurant INNER JOIN provide USING (r_id) INNER JOIN supplier USING (s_id)
+          WHERE rname = '{$rname}'";
+          $result3 = mysqli_query($con,$sql3);
+
+          $i = 1;
+          if (mysqli_num_rows($result3)==0) { 
+            echo "<li><div class=\"outerDiv\">
+                <div class=\"leftCol\">
+                  <p class=\"rName\">SUPPLIERS</p>
+                  <p class=\"rName\">No listed suppliers :(</p>
+                </div>
+                </li>";
+          }
+
+          if (mysqli_num_rows($result3)>0) { 
+            echo "<li>
+              <div class=\"outerDiv\">
+                <div class=\"leftCol\">
+                  <p class=\"rName\">SUUPLIERS</p>
+                </div>
+            </li>";
+          }
+           while($row = mysqli_fetch_array($result3)) {
+            $tableRow = "<li>
+                  <div class=\"outerDiv\">
+                  <div class=\"leftCol\">
+                  <p class=\"rName\">$i.  {$row['sname']}: {$row['item']}</p>
+                </div>
+                <div class=\"mostrightCol\">
+                  <p>{$row['street']}, {$row['city']}, {$row['state']}</p>
+                </div>
+            </li>";
+             echo $tableRow;
+             $i++;
+           }
+
 
            mysqli_close($con);
         ?> 

@@ -4,6 +4,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS c_phone;
 DROP TABLE IF EXISTS r_cuisine;
 DROP TABLE IF EXISTS review; 
+DROP TABLE IF EXISTS own_menu;
 
 DROP TABLE IF EXISTS restaurant;
 CREATE TABLE restaurant( 
@@ -59,14 +60,13 @@ CREATE TABLE r_category(
     FOREIGN KEY (r_id) REFERENCES restaurant(r_id) ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS own_menu;
 DROP TABLE IF EXISTS menu;
 CREATE TABLE menu(
 	r_id INT NOT NULL,
     food_name VARCHAR(50) NOT NULL,
     price DECIMAL(6,2) NOT NULL,
     category VARCHAR(20) NOT NULL, #type of food: dessert, main, appetizer, etc. 
-    description VARCHAR(100),
+    description VARCHAR(500),
     PRIMARY KEY (r_id, food_name, category),
     FOREIGN KEY (r_id) REFERENCES restaurant(r_id) ON DELETE CASCADE
 );

@@ -99,15 +99,14 @@ session_start();
                   <p>{$row['street']}, Charlottesville, VA</p>
                   <p>{$row['phone_num']}</p>
                 </div>
-                <div class=\"leftCol\">
-                  <p class=\"rName\">Sunday Hours: {$row['sun_open_time']} - {$row['sun_close_time']}</p>
-                  <p class=\"rName\">Monday Hours: {$row['mon_open_time']} - {$row['mon_close_time']}</p>
-                  <p class=\"rName\">Tuesday Hours: {$row['tues_open_time']} - {$row['tues_close_time']}</p>
-                  <p class=\"rName\">Wednesday Hours: {$row['wed_open_time']} - {$row['wed_close_time']}</p>
-                  <p class=\"rName\">Thursday Hours: {$row['thurs_open_time']} - {$row['thurs_close_time']}</p>
-                  <p class=\"rName\">Friday Hours: {$row['fri_open_time']} - {$row['fri_close_time']}</p>
-                  <p class=\"rName\">Saturday Hours: {$row['sat_open_time']} - {$row['sat_close_time']}</p>
-                  
+                <div class=\"leftColFull\">
+                  <p class=\"rHours\">Sunday Hours: {$row['sun_open_time']} - {$row['sun_close_time']}</p>
+                  <p class=\"rHours\">Monday Hours: {$row['mon_open_time']} - {$row['mon_close_time']}</p>
+                  <p class=\"rHours\">Tuesday Hours: {$row['tues_open_time']} - {$row['tues_close_time']}</p>
+                  <p class=\"rHours\">Wednesday Hours: {$row['wed_open_time']} - {$row['wed_close_time']}</p>
+                  <p class=\"rHours\">Thursday Hours: {$row['thurs_open_time']} - {$row['thurs_close_time']}</p>
+                  <p class=\"rHours\">Friday Hours: {$row['fri_open_time']} - {$row['fri_close_time']}</p>
+                  <p class=\"rHours\">Saturday Hours: {$row['sat_open_time']} - {$row['sat_close_time']}</p>    
                 </div>
               </div>
             </li>";
@@ -127,28 +126,33 @@ session_start();
                   <p class=\"rName\">MENU</p>
                   <p class=\"rName\">No menu to display :(</p>
                 </div>
+                </div>
                 </li>";
           }
 
           if (mysqli_num_rows($result2)>0) { 
-            echo "<li>
+            echo "<rli>
               <div class=\"outerDiv\">
                 <div class=\"leftCol\">
-                  <p class=\"rName\">MENU</p>
+                  <h2>MENU</h2>
                 </div>
-            </li>";
+              </div>
+            </rli>";
           }
            while($row = mysqli_fetch_array($result2)) {
-            $tableRow = "<li>
+            $tableRow = "<rli> <hr>
               <div class=\"outerDiv\">
+                 <div class=\"mostrightCol\">
+                  <p class=\"rItem\">{$row['price']}</p>
+                </div>
                 <div class=\"leftCol\">
-                  <p class=\"rName\">$i.  {$row['food_name']} ({$row['category']})</p>
-                  <p class=\"rName\">{$row['description']}</p>
+                  <p class=\"rItem\">$i.  {$row['food_name']} ({$row['category']})</p>
                 </div>
-                <div class=\"mostrightCol\">
-                  <p>{$row['price']}</p>
+                <div class=\"leftColFull\">
+                  <p class=\"rItem\">{$row['description']}</p>
                 </div>
-            </li>";
+              </div> 
+            </rli>";
              echo $tableRow;
              $i++;
            }
@@ -162,8 +166,9 @@ session_start();
           if (mysqli_num_rows($result3)==0) { 
             echo "<li><div class=\"outerDiv\">
                 <div class=\"leftCol\">
-                  <p class=\"rName\">SUPPLIERS</p>
-                  <p class=\"rName\">No listed suppliers :(</p>
+                  <h2 class=\"rName\">SUPPLIERS</h2>
+                  <h2 class=\"rName\">No listed suppliers :(</h2>
+                </div>
                 </div>
                 </li>";
           }
@@ -172,12 +177,14 @@ session_start();
             echo "<li>
               <div class=\"outerDiv\">
                 <div class=\"leftCol\">
-                  <p class=\"rName\">SUUPLIERS</p>
+                  <h2 class=\"rName\">SUPPLIERS</h2>
                 </div>
+                </div>
+
             </li>";
           }
            while($row = mysqli_fetch_array($result3)) {
-            $tableRow = "<li>
+            $tableRow = "<rli> <hr>
                   <div class=\"outerDiv\">
                   <div class=\"leftCol\">
                   <p class=\"rName\">$i.  {$row['sname']}: {$row['item']}</p>
@@ -185,7 +192,8 @@ session_start();
                 <div class=\"mostrightCol\">
                   <p>{$row['street']}, {$row['city']}, {$row['state']}</p>
                 </div>
-            </li>";
+                </div>
+            </rli>";
              echo $tableRow;
              $i++;
            }

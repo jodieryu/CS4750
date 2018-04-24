@@ -102,10 +102,11 @@ session_start();
             exit;
           }
            while($row = mysqli_fetch_array($result)) {
+            $r_name = urlencode($row['rname']);
             $tableRow = "<li>
               <div class=\"outerDiv\">
                 <div class=\"leftCol\">
-                  <h2 class=\"rName\" onclick=\"window.location.href='restaurant.php?r={$row['rname']}'\">$i. {$row['rname']}</h2>
+                  <h2 class=\"rName\" onclick=\"window.location.href='restaurant.php?r={$r_name}'\" style=\"cursor:pointer;\">$i. {$row['rname']}</h2>
                   <p class=\"rInfo\"><span class=\"rCost\">{$row['price_range']}</span> <span class=\"rRating\"> {$row['rating_google']} / 5</span></p>
                 </div>
                 <div class=\"rightCol\">

@@ -68,7 +68,7 @@ session_start();
 
       <ul class="list">
         <?php
-           $rname = $_GET["r"] ;
+           $rname = urldecode($_GET["r"]) ;
            require_once('./library.php');
            $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
            // Check connection
@@ -92,7 +92,7 @@ session_start();
                   <button id=\"{$row['r_id']}\" onclick='addToBucketList(\"{$row['r_id']}\");' class=\"btn btn-outline-success\">Add to BucketList!</button>
                 </div>
                 <div class=\"leftCol\">
-                  <h2 class=\"rName\" onclick=\"window.location.href='restaurant.php?r={$row['rname']}'\">{$row['rname']}</h2>
+                  <h2 class=\"rName\">{$row['rname']}</h2>
                   <p class=\"rInfo\"><span class=\"rCost\">{$row['price_range']}</span> <span class=\"rRating\"> {$row['rating_google']} / 5</span></p>
                 </div>
                 <div class=\"rightCol\">
@@ -123,8 +123,8 @@ session_start();
           if (mysqli_num_rows($result2)==0) { 
             echo "<li><div class=\"outerDiv\">
                 <div class=\"leftCol\">
-                  <p class=\"rName\">MENU</p>
-                  <p class=\"rName\">No menu to display :(</p>
+                  <h2 class=\"rName\">MENU</h2>
+                  <h2>No menu to display :(</h2>
                 </div>
                 </div>
                 </li>";
@@ -134,7 +134,7 @@ session_start();
             echo "<rli>
               <div class=\"outerDiv\">
                 <div class=\"leftCol\">
-                  <h2>MENU</h2>
+                  <h2 class=\"rName\">MENU</h2>
                 </div>
               </div>
             </rli>";
@@ -167,30 +167,29 @@ session_start();
             echo "<li><div class=\"outerDiv\">
                 <div class=\"leftCol\">
                   <h2 class=\"rName\">SUPPLIERS</h2>
-                  <h2 class=\"rName\">No listed suppliers :(</h2>
+                  <h2>No listed suppliers :(</h2>
                 </div>
                 </div>
                 </li>";
           }
 
           if (mysqli_num_rows($result3)>0) { 
-            echo "<li>
+            echo "<sli>
               <div class=\"outerDiv\">
                 <div class=\"leftCol\">
                   <h2 class=\"rName\">SUPPLIERS</h2>
                 </div>
                 </div>
-
-            </li>";
+            </sli>";
           }
            while($row = mysqli_fetch_array($result3)) {
             $tableRow = "<rli> <hr>
                   <div class=\"outerDiv\">
                   <div class=\"leftCol\">
-                  <p class=\"rName\">$i.  {$row['sname']}: {$row['item']}</p>
+                  <p class=\"rItem\">$i.  {$row['sname']}: {$row['item']}</p>
                 </div>
                 <div class=\"mostrightCol\">
-                  <p>{$row['street']}, {$row['city']}, {$row['state']}</p>
+                  <p class=\"rItem\">{$row['street']}, {$row['city']}, {$row['state']}</p>
                 </div>
                 </div>
             </rli>";

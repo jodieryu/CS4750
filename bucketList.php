@@ -39,33 +39,6 @@ session_start();
         document.getElementById(r_id).innerText = "Restaurant Visited!";
       }
     </script>
-
-<!--     <script type="text/javascript" language="javascript">
-      function exportList (){
-        var xmlhttp = new XMLHttpRequest();
-
- $.ajax({
-        url: '/downloadCSV.php',
-        success:function(response){
-           alert(response);
-       }});
-      }
-    </script> -->
-
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script language="javascript">
-        function exportList() {
-            $.ajax({
-                type: "GET",
-                url: "downloadCSV.php" ,
-                success : function() { 
-
-                    console.log("works");
-
-                }
-            });
-        }
-    </script>
   </head>
  
   <!-- Navbar -->
@@ -151,9 +124,8 @@ session_start();
           fclose($fp);*/
 
            echo " <div class=\"bucketlist_item\">
-                <h3>
-                  <button class=\"btn btn-outline-primary\" >Download CSV</button>
-                  <a href=\"downloadCSV.php\">Download CSV</a>
+                <h3 style=\"padding-bottom:25px;\">
+                  <button class=\"btn btn-outline-primary\" onclick=\"window.location.href='downloadCSV.php'\">Download CSV</button>
                 </h3>
               </div> ";
 

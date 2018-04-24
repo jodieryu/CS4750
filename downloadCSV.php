@@ -18,7 +18,7 @@ FROM restaurant INNER JOIN bucketlist_item USING (r_id)
 WHERE c_id = '{$_SESSION['c_id']}' and eaten_at = 'F'";
 
 $result = mysqli_query($con, "$sql");
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+//$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $fp = fopen("php://output", 'w');
 $header =  array('rname' => "rname", 'price_range' => "price_range", 'phone_num' => "phone_num", 'street' => "street", 'city' => "city", 'rating' => "rating");
 

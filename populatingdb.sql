@@ -3,24 +3,24 @@ SET FOREIGN_KEY_CHECKS=0;
 DELETE FROM restaurant;
 ALTER TABLE restaurant AUTO_INCREMENT=1;
 INSERT INTO restaurant (rname, phone_num, street, price_range, rating_google) VALUES
-("Roots Natural Kitchen", 4345296229, "1329 W Main St", "$", 4.8),
-("Cafe 88", 4342939888, "923 Preston Ave", "$", 4.1),
-("Got Dumplings", 4342443040, "1395 W Main St", "$", 4.4),
-("Cookout", 8665470011, "1254 Emmet St N", "$", 4.1),
-("Monsoon Siam", 4349711515, "113 E Market St", "$$", 4.3),
-("Marco & Luca", 4342440016, "107 Elliewood Ave", "$", 4.6),
-("Silk Thai", 4349778424, "2210 Fontaine Ave", "$$", 4.8),
-("Bodo’s Bagels", 4342936021, "1609 University Ave", "$", 4.7),
-("Milan Indian Cuisine", 4349842828, "1817 Emmet St N", "$$", 4.4),
-("White Spot", 4349842828, "1407 University Ave", "$", 4.2),
-("Trinity Irish Pub", 4342957100, "1505 University Ave", "$$", 3.8),
-("Mellow Mushroom", 4349729366, "1321 W Main St", "$$", 3.8), 
-("Chopt Creative Salad Co.", 4343288092, "1114 Emmet St", "$$", 3.5),
-("Lampo", 4342443226, "205 Monticello Rd", "$$", 4.7),
-("Citizen Burger Bar", 4349799944, "212 E Main St", "$$", 4.4),
-("Revolutionary Soup", 4342967687, "108 2nd St SW", "$", 4.3),
-("Peter Chang", 4342449818, "2162 Barracks Rd", "$$", 4.0),
-("Iron Paffles & Coffee", 4348063800, "214 W Water St", "$", 4.3)
+("Roots Natural Kitchen", "(434) 529-6229", "1329 W Main St", "$", 4.8),
+("Cafe 88", "(434) 293-9888", "923 Preston Ave", "$", 4.1),
+("Got Dumplings", "(434) 244-3040", "1395 W Main St", "$", 4.4),
+("Cookout", "(866) 547-0011", "1254 Emmet St N", "$", 4.1),
+("Monsoon Siam", "(434) 971-1515", "113 E Market St", "$$", 4.3),
+("Marco & Luca", "(434) 244-0016", "107 Elliewood Ave", "$", 4.6),
+("Silk Thai", "(434) 977-8424", "2210 Fontaine Ave", "$$", 4.8),
+("Bodo’s Bagels", "(434) 293-6021", "1609 University Ave", "$", 4.7),
+("Milan Indian Cuisine", "(434) 984-2828", "1817 Emmet St N", "$$", 4.4),
+("White Spot", "(434) 984-2828", "1407 University Ave", "$", 4.2),
+("Trinity Irish Pub", "(434) 295-7100", "1505 University Ave", "$$", 3.8),
+("Mellow Mushroom", "(434) 972-9366", "1321 W Main St", "$$", 3.8), 
+("Chopt Creative Salad Co.", "(434) 328-8092", "1114 Emmet St", "$$", 3.5),
+("Lampo", "(434) 244-3226", "205 Monticello Rd", "$$", 4.7),
+("Citizen Burger Bar", "(434) 979-9944", "212 E Main St", "$$", 4.4),
+("Revolutionary Soup", "(434) 296-7687", "108 2nd St SW", "$", 4.3),
+("Peter Chang", "(434) 244-9818", "2162 Barracks Rd", "$$", 4.0),
+("Iron Paffles & Coffee", "(434) 806-3800", "214 W Water St", "$", 4.3)
 ;
 
 DELETE FROM r_hours;

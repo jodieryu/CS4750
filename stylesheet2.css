@@ -11,12 +11,17 @@ form.searchBar button {
 form.searchBar #filterButton {
   margin-top: 0%;
   margin-left: 5%;
+  padding: 1%;
   width: 25%;
   background: #FFFFFF;
   color: black;
   border: none;
+  font-size: 28px; 
 }
 
+.searchBar a {
+  font-size: 18px;
+}
 
 /* * * * * * * * * * * * * * * * * * * * 
 			SEARCH TABLE

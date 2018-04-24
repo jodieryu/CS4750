@@ -25,6 +25,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script type="text/javascript" language="javascript">
+      // Add restaurant to user's BucketList
       function addToBucketList(r_id) {
         $.post("bucketListAdder.php",
           { selected_r_id: r_id },
@@ -33,6 +34,11 @@ session_start();
 
         });
       }
+
+      // Filter the results
+      function filterResults(filter) {
+        alert(filter);
+      } 
     </script>
   </head>
  
@@ -69,14 +75,37 @@ session_start();
         <form class="searchBar" action="search.php" method="post">
             <input type="text" placeholder="Find burgers, pasta, bars.." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
-            <button type="button" id="filterButton"><i class="fa">FILTER</i></button>
+            <!-- <button type="button" id="filterButton"><i class="dropdown">FILTER</i></button> -->
+              <a href="#" class="dropdown-toggle dropdown" id="filterButton" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> FILTER <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>PRICE RANGE
+                </li>
+                <li><a href="javascript:filterResults('0')">$</a>
+                </li>
+                <li><a href="javascript:filterResults('1')">$$</a>
+                </li>
+                <li><a href="javascript:filterResults('2')">$$$</a>
+                </li>
+                <li><a href="javascript:filterResults('4')">$$$$</a>
+                </li>
+                <li>RATING
+                </li>
+                <li><a href="javascript:filterResults('5')">>4.0</a>
+                </li>
+                <li><a href="javascript:filterResults('6')">>3.0</a>
+                </li>
+                <li><a href="javascript:filterResults('7')">>2.0</a>
+                </li>
+              </ul>
         </form>
       </div>
 
       <ul class="list">
         <?php
            require_once('./library.php');
+           require_once('./library2.php');
            $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+           $con2 = new mysqli($SERVER, $USERNAME2, $PASSWORD2, $DATABASE);
            // Check connection
            if (mysqli_connect_errno()) {
            echo("Can't connect to MySQL Server. Error code: " .
@@ -101,6 +130,14 @@ session_start();
             echo "<li> No Search Results found!</li>";
             exit;
           }
+
+          $sql2 = "CREATE OR REPLACE VIEW search AS 
+          SELECT DISTINCT r_id, rname, phone_num, street, price_range, rating_google, num_of_reviews 
+          FROM restaurant INNER JOIN r_category USING (r_id) 
+          WHERE rname 
+          LIKE
+            '%{$_POST['search']}%' OR category = '{$_POST['search']}' ";
+          $result2 = mysqli_query($con2,$sql2);
            while($row = mysqli_fetch_array($result)) {
             $r_name = urlencode($row['rname']);
             $tableRow = "<li>

@@ -1,8 +1,8 @@
-<?php
-session_start();
-?>
-<!DOCTYPE html>
-<html>
+  <?php
+  session_start();
+  ?>
+  <!DOCTYPE html>
+  <html>
   <head>
     <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
     <title>Cville Foodies | BucketList</title>
@@ -24,70 +24,70 @@ session_start();
 
     <script type="text/javascript" language="javascript">
       function addToBucketList(r_id, c_id) {
-        // set eaten_at to T in the DB
-        $.post("addVisit.php",
-          { selected_r_id: r_id, 
-            curr_user_id: c_id},
-          function(data,status){
-            // alert(data);
-        });
-        // set the button as visited
-        document.getElementById(r_id).onclick = function() { alert("Restaurant has already been visited!"); }
-        document.getElementById(r_id).classList.remove('btn-outline-primary');
-        document.getElementById(r_id).classList.add('btn-success');
-        document.getElementById(r_id).classList.add('disabled');
-        document.getElementById(r_id).innerText = "Restaurant Visited!";
-      }
-    </script>
-  </head>
- 
-  <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <a href="./" class="pull-left">
+          // set eaten_at to T in the DB
+          $.post("addVisit.php",
+            { selected_r_id: r_id, 
+              curr_user_id: c_id},
+              function(data,status){
+              // alert(data);
+            });
+          // set the button as visited
+          document.getElementById(r_id).onclick = function() { alert("Restaurant has already been visited!"); }
+          document.getElementById(r_id).classList.remove('btn-outline-primary');
+          document.getElementById(r_id).classList.add('btn-success');
+          document.getElementById(r_id).classList.add('disabled');
+          document.getElementById(r_id).innerText = "Restaurant Visited!";
+        }
+      </script>
+    </head>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <a href="./" class="pull-left">
         <img src="./images/logo.png">
-    </a> 
-    <a href="./" class="navbar-brand">Cville Foodies</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
+      </a> 
+      <a href="./" class="navbar-brand">Cville Foodies</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./about.php">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./categories.php">Categories</a>
-      </li>
-    </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.php">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./categories.php">Categories</a>
+          </li>
+        </ul>
 
-    <?php include 'loginHeader.php'; ?>
-    
-  </div>
-</nav>
+        <?php include 'loginHeader.php'; ?>
 
-  <body id="bucketListPage">
-    <div class="container">
-      <div class=bucketListHeader></div>
-      <div class="bucketListItems">
-        <?php
+      </div>
+    </nav>
+
+    <body id="bucketListPage">
+      <div class="container">
+        <div class=bucketListHeader></div>
+        <div class="bucketListItems">
+          <?php
           if(!isset($_SESSION["username"])) {
             echo "<br/><p style='text-align:center'> You are not logged in! Please log in to see your BucketList! </p>";
             exit();
           }
           require_once('./library.php');
           $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-          // Check connection
+            // Check connection
           if (mysqli_connect_errno()) {
-          echo("Can't connect to MySQL Server. Error code: " .
-          mysqli_connect_error());
-          return null;
+            echo("Can't connect to MySQL Server. Error code: " .
+              mysqli_connect_error());
+            return null;
           }
 
-          // Form the SQL query (a SELECT query)
+            // Form the SQL query (a SELECT query)
           $sql="SELECT *
           FROM restaurant INNER JOIN bucketlist_item USING (r_id)
           WHERE c_id = '{$_SESSION['c_id']}' and eaten_at = 'F'";
@@ -101,18 +101,26 @@ session_start();
           while($row = mysqli_fetch_array($result)) {
             $tableRow = "
             <div class=\"bucketListItem\">
-              <h3> $i. {$row['rname']} ({$row['price_range']})</h3> <button id=\"{$row['r_id']}\" onclick='addToBucketList(\"{$row['r_id']}\", \"{$row['c_id']}\");' class=\"btn btn-outline-primary\">Visit the Restaurant</button>
-              <p> <b>Phone #:</b> {$row['phone_num']} <b>Address:</b> {$row['street']}, Charlottesville, VA<br/> <b>Rating:</b> {$row['rating_google']}/5.0 </p>
+            <h3> $i. {$row['rname']} ({$row['price_range']})</h3> <button id=\"{$row['r_id']}\" onclick='addToBucketList(\"{$row['r_id']}\", \"{$row['c_id']}\");' class=\"btn btn-outline-primary\">Visit the Restaurant</button>
+            <p> <b>Phone #:</b> {$row['phone_num']} <b>Address:</b> {$row['street']}, Charlottesville, VA<br/> <b>Rating:</b> {$row['rating_google']}/5.0 </p>
             </div>";
             echo $tableRow;
             $i++;
-           }
+          }
 
-          mysqli_close($con);
-        ?> 
-      </div>
-    </div>
-  </body>
+            echo " <div class=\"bucketlist_item\">
+            <h3 style=\"padding-bottom:25px;\">
+            <button class=\"btn btn-outline-primary\" onclick=\"window.location.href='downloadCSV.php'\">Download CSV</button>
+            </h3>
+            </div> ";
 
-<footer> &copy; Copyright 2018 - Katherine Qian, Jodie Ryu, Youbeen Shim, Joshua Ya. All rights reserved.
-</html>
+            mysqli_close($con);
+            ?> 
+          </div>
+        </div>
+
+
+      </body>
+
+      <footer> &copy; Copyright 2018 - Katherine Qian, Jodie Ryu, Youbeen Shim, Joshua Ya. All rights reserved.
+        </html>

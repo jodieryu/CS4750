@@ -39,6 +39,33 @@ session_start();
         document.getElementById(r_id).innerText = "Restaurant Visited!";
       }
     </script>
+
+<!--     <script type="text/javascript" language="javascript">
+      function exportList (){
+        var xmlhttp = new XMLHttpRequest();
+
+ $.ajax({
+        url: '/downloadCSV.php',
+        success:function(response){
+           alert(response);
+       }});
+      }
+    </script> -->
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script language="javascript">
+        function exportList() {
+            $.ajax({
+                type: "GET",
+                url: "downloadCSV.php" ,
+                success : function() { 
+
+                    console.log("works");
+
+                }
+            });
+        }
+    </script>
   </head>
  
   <!-- Navbar -->
@@ -108,10 +135,34 @@ session_start();
             $i++;
            }
 
+/*          $result = mysqli_query($con, "$sql");
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+          $fp = fopen('file.csv', 'w');
+          $header =  array('rname' => "rname", 'price_range' => "price_range", 'phone_num' => "phone_num", 'street' => "street", 'city' => "city", 'rating' => "rating");
+
+          fputcsv($fp, $header);
+
+          while($row = mysqli_fetch_array($result)) {
+              $arr = array('rname' => "{$row['rname']}", 'price_range' => "{$row['price_range']}", 'phone_num' => "{$row['phone_num']}", 'street' => "{$row['street']}", 'city' => "Charlottesville", 'rating' => "{$row['rating_google']}/5");
+             // print json_encode($row);
+              fputcsv($fp, $arr);
+          }
+
+          fclose($fp);*/
+
+           echo " <div class=\"bucketlist_item\">
+                <h3>
+                  <button class=\"btn btn-outline-primary\" >Download CSV</button>
+                  <a href=\"downloadCSV.php\">Download CSV</a>
+                </h3>
+              </div> ";
+
           mysqli_close($con);
         ?> 
       </div>
     </div>
+
+
   </body>
 
 <footer> &copy; Copyright 2018 - Katherine Qian, Jodie Ryu, Youbeen Shim, Joshua Ya. All rights reserved.

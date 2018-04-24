@@ -108,12 +108,27 @@ INSERT INTO r_category (r_id, category) VALUES (1, "Salad"), (2, "Chinese"), (3,
 DELETE FROM supplier;
 ALTER TABLE supplier AUTO_INCREMENT=1;
 INSERT INTO supplier (sname, street, city, state) VALUES 
-("Wolf Creek Farm", "4345 Wolftown-Hood Road", "Madison", "VA")
+("Wolf Creek Farm", "4345 Wolftown-Hood Road", "Madison", "VA"),
+("Local Food Hub", "556 Dettor Rd #108", "Charlottesville", "VA"),
+("Timbercreek Farm", "2245 Garth Rd", "Charlottesville", "VA"),
+("Costco", "3171 District Ave", "Charlottesville", "VA"),
+("Twenty Paces Dairy", "5209 Bellair Farm", "Charlottesville", "VA"),
+("Digger Jay's", "30 Georgia Avenue", "Verona", "VA"),
+("Cville Oriental", "1195 Seminole Trail", "Charlottesville", "VA"),
+("JM Stock Provisions", "709 W Main St", "Charlottesville", "VA"),
+("Agriberry Farm and CSA", "6289 River Rd", "Charlottesville", "VA")
 ;
 
 DELETE FROM provide;
 INSERT INTO provide VALUES 
-(1, 14, "beef")
+(2, 1, "fresh ingredients"),
+(7, 2, "ingredients"),
+(1, 14, "beef"),
+(5, 14, "dairy"),
+(6, 14, "vegetables"),
+(3, 15, "beef"),
+(8, 18, "meats"),
+(9, 18, "fruits")
 ; 
 
 DELETE FROM achievements;

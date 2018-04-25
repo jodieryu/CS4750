@@ -1,3 +1,8 @@
+<?php if(isset($_SESSION["admin"])) {
+	header("Location: ./makeRestaurant.php");
+  	exit();
+}
+?>
 <?php if(isset($_SESSION["username"])) : ?>
 	<ul class="nav navbar-nav navbar-right">
 		<li class="dropdown">

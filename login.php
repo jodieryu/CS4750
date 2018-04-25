@@ -3,6 +3,9 @@ session_start();
 if(isset($_SESSION["username"])) {
   header("Location: ./");
   exit();
+} else if(isset($_SESSION["admin"])) {
+  header("Location: ./makeRestaurant.php");
+  exit();
 }
 ?>
 

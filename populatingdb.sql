@@ -34,7 +34,8 @@ DELETE FROM customer;
 ALTER TABLE customer AUTO_INCREMENT=1;
 INSERT INTO customer (fname, lname, street, city, state, username, pwd) VALUES
 ("Youbeen", "Shim", "2038 Chase Avenue", "Charlottesville", "VA", "youbeen123", "$2y$10$o9INWfD8KsxPTRSh0CzojeI/N9deE/n2tBS14EMWAw/I9IwJRUlLW"), #password = password
-("Joshua", "Ya", "121 Harmon Street", "Charlottesville", "VA", "joshy29", "$2y$10$D5oXEtJVptQVRTZ2zz02A.V8kcYgiA9fB.TvsX3O6vNycqKe4Pgoa"); #password is pass123
+("Joshua", "Ya", "121 Harmon Street", "Charlottesville", "VA", "joshy29", "$2y$10$D5oXEtJVptQVRTZ2zz02A.V8kcYgiA9fB.TvsX3O6vNycqKe4Pgoa"), #password is pass123
+("Admin", "None", "None", "None", "None", "admin", "$2y$10$Oft2.KLtCAVTwfFyq7WLXOvfIjSOVBqwDg6zveqsLstUPxy/w9svy"); #password is adminpass
 
 DELETE FROM menu; 
 INSERT INTO menu (r_id, food_name, price, category, description) VALUES (1, "El Jefe", 9.00, "main", "Primary Base: Brown Rice Secondary Base: Kale Ingredients: Black Beans, Charred Corn, Red Onions, Avocado, Pita Chips, Feta Dressing: Cilantro Lime From the Grill: Chicken Ask for the Works! (Fresh Lime & Dash of Tabasco)"), 

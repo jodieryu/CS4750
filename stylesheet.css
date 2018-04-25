@@ -119,7 +119,7 @@ form.searchBar::after {
 * * * * * * * * * * * * * * * * * * * * * * */
 #makeRestaurant {
   padding-top: 100px;
-  background-image: url("/images/background-food.jpg");
+  background-image: url("./images/background-food.jpg");
   background-size: cover;
   color: white;
   font-family: QuickSand;
